@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view("/","registrar_consola")->name("registrar_consolas")
+Route::view("home","home")->name("home");
 
-Route::view("/registrar_juego","registrar_juego")->name("registrar_juegos")
+Route::view("registrar_consola","registrar_consola")->name("registrar_consola");
 
-Route::view("/ver_consolas","ver_consolas")->name("ver_consolas")
+Route::view("/registrar_juego","registrar_juego")->name("registrar_juegos");
 
-Route::view("/ver_juegos","ver_juegos")->name("ver_juegos")
+Route::view("/ver_consolas","ver_consolas")->name("ver_consolas");
+
+Route::view("/ver_juegos","ver_juegos")->name("ver_juegos");
 
 
 
