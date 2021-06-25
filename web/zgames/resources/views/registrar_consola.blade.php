@@ -24,12 +24,12 @@
 
                         <div class="mb-3">
                             <label for="ano-txt" class="form-label">Año Lanzamiento</label>
-                            <input type="number" class="form-control" id="ano-txt">
+                            <input type="number" class="form-control" id="anio-txt">
                         </div>
                     </div>
 
                     <div class="card-footer d-grid gap-1">
-                        <button class="btn btn-info">Registrar</button>
+                        <button id="registrar-btn" class="btn btn-info">Registrar</button>
                     </div>
                 </div>
             </div>
@@ -39,5 +39,6 @@
 @endsection
 
 @section("javascript")
+    <script src="{{asset('js/servicios/consolasService.js')}}"></script> 
     <script src="{{asset('js/home.js')}}"></script>
 @endsection

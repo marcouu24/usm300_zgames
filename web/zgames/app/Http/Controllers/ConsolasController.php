@@ -22,11 +22,12 @@ class ConsolasController extends Controller
     }
 
     //Fx registra consola
-    public function crearConsolas(){
+    public function crearConsolas(Request $request){
+        $input=$request->all(); //Genera arreglo con todo lo que mando la interfaz(js)
         $consola = new consola();
-        $consola->nombre="PS5";
-        $consola->marca="Nintewndo";
-        $consola->anio=2021;
+        $consola->nombre=$input["nombre"];
+        $consola->marca=$input["marca"];
+        $consola->anio=$input["anio"];
 
         $consola->save();
         return $consola;
