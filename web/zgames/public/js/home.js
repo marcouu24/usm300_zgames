@@ -10,7 +10,14 @@ const cargarMarcas=async()=>{
         marcaSelect.appendChild(option);
     })
 }
-cargarMarcas();
+
+
+//Esto ejecuta codigo asegurando q el ottal de la pagina
+//incluiso recursos este cargado antes de ehecutar
+document.addEventListener("DOMContentLoaded", ()=>{
+    cargarMarcas();
+});
+
 
 
 document.querySelector("#registrar-btn").addEventListener("click", async ()=>{
@@ -26,5 +33,7 @@ document.querySelector("#registrar-btn").addEventListener("click", async ()=>{
     //2,El controlador crea el modelo
     //3. El modelo ingresa en la base de datos
     let res= await crearConsola(consola);
-    swal.fire("Buen trabajo!", "Se ha agregado la consola", "success");
+    await Swal.fire("Buen trabajo!", "Se ha agregado la consola", "success");
+    //await hace q se realizara la prox accion cuando la persona aprete OK
+    window.location.href="ver_consolas";
 });
