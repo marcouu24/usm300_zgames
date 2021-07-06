@@ -1,7 +1,29 @@
+const iniciarEliminacion= async function(){
+    //1.Obtener el id a eliminar
+    let id=this.idConsola;
+    let resp = await Swal.fire({title:"Estas Seguro?", text:"Esta Operacion es irreversible"
+    , icon:"error", showCancelButton:true});
+    if (resp.isConfirmed){
+        //1.Eliminar
+        if(await eliminarConsola(id)){
+            //2.Si la eliminacion fue exitosa recargar la tabla
+            let consolas = await getConsolas();
+            cargarTabla(consolas);
+            Swal.fire("consola Eliminada", "Consola eliminada erxitosamente", "info");
+        }else{
+        //3. Si no fue exitosda mostrar mensaje de error
+        Swal.fire("Error","No sepudo atender a la solicitud","error");
+        }       
+    } else{
+        Swal.fire("Cancelado","Cancelado a peticion del usuario","info");
+    }
+};
+
+
 const cargarTabla = (consolas) =>{
     //1. Obtener referencia al cuerpo de la tabla
     let tbody = document.querySelector("#tbody-consola");
-    
+    tbody.innerHTML="";
     //2. Recorrer todas las consolas
     for(let i=0; i < consolas.length; ++i){
         //3. Por cada consola generar una fila
@@ -19,6 +41,7 @@ const cargarTabla = (consolas) =>{
         botonEliminar.innerText= "Eliminar";
         botonEliminar.classList.add("btn","btn-danger");
         botonEliminar.idConsola = consolas[i].id;
+        botonEliminar.addEventListener("click", iniciarEliminacion);
         tdAcciones.appendChild(botonEliminar);
 
         //5. Agregar los td al tr
